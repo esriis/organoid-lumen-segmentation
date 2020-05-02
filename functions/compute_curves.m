@@ -47,7 +47,7 @@ function handles = compute_curves(hObject,eventdata,handles,i,stage,smoothing_pa
     if stage <= 3
         
         bw3_tmp = handles.bw3(:,:,i);
-        condition1 = true;
+        condition1 = sum(abs(bw3_tmp(:)))>0;
         
         while condition1
 %             condition2 = true;
@@ -119,7 +119,12 @@ function handles = compute_curves(hObject,eventdata,handles,i,stage,smoothing_pa
     end
     if stage <= 4
         % bw5 is the final binary image of the segmented region
-        handles.bw5(:,:,i) = bwareafilt(logical(handles.bw4(:,:,i)),1);
+        bw4_tmp = handles.bw4(:,:,i);
+        if sum(abs(bw4_tmp(:))) > 0
+            handles.bw5(:,:,i) = bwareafilt(logical(bw4_tmp),1);
+        else
+            handles.bw5(:,:,i) = logical(bw4_tmp);
+        end
         handles.bw5(:,:,i) = handles.bw5(:,:,i).*logical(handles.bw3(:,:,i));
         disk = 2*disk;
         bw_tmp_close = padarray(handles.bw5(:,:,i),[disk disk],'both');

@@ -16,10 +16,10 @@ if strcmp(direction,'xy2rect')
 elseif strcmp(direction,'rect2xy')
     if length(handles.rect)==4
         
-        set(handles.x1_value,'String',handles.rect(1));
-        set(handles.y1_value,'String',handles.rect(2));
-        set(handles.x2_value,'String',handles.rect(1)+handles.rect(3));
-        set(handles.y2_value,'String',handles.rect(2)+handles.rect(4));
+        set(handles.x1_value,'String',num2str(handles.rect(1)));
+        set(handles.y1_value,'String',num2str(handles.rect(2)));
+        set(handles.x2_value,'String',num2str(handles.rect(1)+handles.rect(3)));
+        set(handles.y2_value,'String',num2str(handles.rect(2)+handles.rect(4)));
     elseif isempty(handles.rect)
         set(handles.x1_value,'String','');
         set(handles.y1_value,'String','');

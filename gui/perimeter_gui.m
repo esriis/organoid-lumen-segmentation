@@ -63,10 +63,6 @@ handles.dz = 8;
 
 
 %%
-handles.y2_value= [];
-handles.y1_value = [];
-handles.x2_value = [];
-handles.x1_value = [];
 handles.I = [];
 handles.ratio_I = [];
 handles.ratio_I_box = [];
@@ -289,7 +285,6 @@ function coordinate_button_Callback(hObject, eventdata, handles)
 % For drawing rectangle region
 set(handles.coordinate_panel,'Visible','off')
 rect = round(getrect(handles.image_axes));
-slice_index = get(handles.slider,'Value');
 handles = update_plot(hObject, eventdata, handles);
 if length(rect)==4
     rect(1) = max(rect(1),1);
@@ -412,6 +407,11 @@ for i = 1:handles.slice_num
     handles = compute_curves(hObject,eventdata,handles,i,0,handles.smoothing_param);
 %     handles.smooth_extra{i} = cell(1);
 end
+
+handles = checkComputedCurves(hObject,eventdata,handles);
+
+
+
 handles.image_plot = handles.bw5;
 
 handles.startFlag = false;

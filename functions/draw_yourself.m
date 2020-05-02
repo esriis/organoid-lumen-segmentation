@@ -28,7 +28,7 @@ function handles = draw_yourself(hObject, eventdata, handles)
 
     set(handles.undo_button,'Enable','on')
     set(handles.undo_button,'String','Undo')
-    handles = compute_curves(hObject,eventdata,handles,i,5,5);
+    handles = compute_curves(hObject,eventdata,handles,i,5,handles.smoothing_param);
     handles.undo_state(i) = 3;
     guidata(hObject,handles)
 end
