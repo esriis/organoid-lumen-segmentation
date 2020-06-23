@@ -1,5 +1,5 @@
-# Surface estimation + visualisation of 3D organoid, based on segmentation of stacked 2D images.
-## A MATLAB graphical user interface (GUI).
+# Segmentation of 3D organoids
+#### A MATLAB graphical user interface (GUI) for estimating and visualising the surface of 3D organoid structures, based on segmentation of stacked 2D images.
 
 
 
