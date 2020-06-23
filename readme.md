@@ -1,3 +1,12 @@
+# Surface estimation + visualisation of 3D organoid, based on segmentation of stacked 2D images.
+## A MATLAB graphical user interface (GUI).
+
+
+
+
+
+
+
 Spreadsheet format:
 
 [Rows. Data]
