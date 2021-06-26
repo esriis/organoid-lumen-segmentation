@@ -6,7 +6,7 @@
 
   
 
-The code is provided as supplementary material to the preprint [*An early cell shape transition drives evolutionary expansion of human forebrain](https://www.biorxiv.org/content/10.1101/2020.07.04.188078v1), Benito-Kwiecinski et al., 2020*.
+The code is provided as supplementary material to the publication [*An early cell shape transition drives evolutionary expansion of human forebrain](https://www.cell.com/cell/fulltext/S0092-8674(21)00239-7), Benito-Kwiecinski et al., 2021*.
 
   
 
@@ -14,7 +14,7 @@ The code is provided as supplementary material to the preprint [*An early cell s
 
 * The MATLAB Image Processing toolbox.
 * The GUI was developed on the macOS platform and might not be compatible with the Windows platform.
-* The images to be segmented must have the extension *_.tif_* and be stored in a folder which the GUI can load.
+* The images for segmentation must be placed in a separate folder. If color-image, they will be converted to grayscale with the MATLAB function rgb2gray.
 
   
 
