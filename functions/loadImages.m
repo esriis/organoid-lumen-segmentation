@@ -6,17 +6,11 @@ if ~image_path
 end
 listing = dir(image_path);
 
-count = 0;
 
-for i = 3:length(listing)
-    if endsWith(listing(i).name,'.tif')
-        count = count+1;
-        filename = [image_path, '/', listing(i).name];
-    end
-end
+count = length(listing)-2;
 
 if count == 0
-    errordlg(['Folder ' image_path ' does not contain .tif files.'])
+    errordlg(['Folder ' image_path ' is empty.'])
     return
 end
 
@@ -29,19 +23,23 @@ handles.slice_num_full = handles.slice_num;
 set(handles.slice_end_value,'String',num2str(0));
 set(handles.slice_end_value,'String',num2str(handles.slice_end-1));
 
-% Get image dimensions
-[Nx, Ny] = size(imread(filename));
+% Get image dimensions    
+filename = [image_path, '/', listing(3).name];
+[Nx, Ny, num_color_channels] = size(imread(filename));
 handles.I = zeros(Nx,Ny,handles.slice_num);
 
 % Load images
 count = 1;
 h = waitbar(0,'Loading images');
 for i = 3:length(listing)
-    if endsWith(listing(i).name,'.tif')   
-        waitbar(count/handles.slice_num,h)
-        handles.I(:,:,count) = imread([image_path, '/', listing(i).name]);
-        count = count+1;
+    waitbar(count/handles.slice_num,h)
+    im_tmp = imread([image_path, '/', listing(i).name]);
+    if num_color_channels == 3
+        handles.I(:,:,count) = rgb2gray(im_tmp);
+    elseif num_color_channels == 1
+        handles.I(:,:,count) = im_tmp;
     end
+    count = count+1;
 end
 
 handles.I = handles.I/max(handles.I(:));
